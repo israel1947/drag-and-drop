@@ -1,0 +1,105 @@
+<div class="p-d-flex">
+    <div class=" text-layout">
+        <h1 class="poppins text-center">Listado de Tareas</h1>
+    </div>
+
+    <div class="m-4">
+        <div class="text-layout poppins text-center">
+            <h4>Agregar Nueva Tarea </h4>
+
+            <span class="p-float-label">
+                <input
+                [(ngModel)]="tareasNuevas"
+                (keyup.enter)="agregarTarea()"
+                class="p-5"
+                id="float-input"
+                type="text"
+                 pInputText>
+
+                <label
+                 for="float-input">
+                 Nueva Tarea
+                </label>
+            </span>
+        </div>
+    </div>
+
+    <div class="grid">
+
+          <div class="text-layout col-4">
+            <h4 class="poppins">Todas</h4>
+            <div
+                    cdkDropList class="example-list" 
+                    id="listaTodo" 
+                    [cdkDropListData]="todo"
+                    [cdkDropListConnectedTo]="['listaProgress']"
+                    (cdkDropListDropped)="drop($event)"
+                    >
+
+                <div
+                    class="example-box poppins"
+                    *ngFor="let todos of todo"
+                    cdkDrag>
+
+                    <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+                    {{todos | titlecase}}
+
+                    <button
+                        (click)="borrarCliente()" 
+                        class="p-button-danger"
+                        pButton type="button" 
+                        icon="pi pi-trash" 
+                        iconPos="left">
+                    </button>
+                    </div>
+              </div>
+          </div>
+        <div class=" text-layout col-4">
+            <h4 class="poppins">En Progreso</h4>
+            <div 
+                    cdkDropList class="example-list"
+                    id="listaProgress"
+                    [cdkDropListData]="progress"
+                    [cdkDropListConnectedTo]="['listaFinalizado','listaTodo']" 
+                    (cdkDropListDropped)="drop($event)">
+                <div
+                    class="example-box poppins" 
+                    *ngFor="let items of progress" 
+                    cdkDrag>
+
+                    <div
+                    class="example-custom-placeholder" 
+                    *cdkDragPlaceholder>
+                    </div>
+
+                    {{items}}
+                </div>
+              </div>
+        </div>
+
+            <div class=" text-layout col-4">
+                <h4 class="poppins">Finalizadas</h4>
+                <div 
+                    cdkDropList class="example-list" 
+                    id="listaFinalizado" 
+                    [cdkDropListData]="finalizadas"
+                    [cdkDropListConnectedTo]="['listaProgress']" 
+                    (cdkDropListDropped)="drop($event)">
+                    <div  
+                    class="example-box poppins"
+                     *ngFor="let items of finalizadas" 
+                     cdkDrag
+                     >
+                      <div class="example-custom-placeholder " *cdkDragPlaceholder></div>
+                      {{items}}
+                      <button
+                      class="p-button-success" 
+                      pButton type="button"
+                       icon="pi pi-check" 
+                       iconPos="left">
+                    </button>
+                    </div>
+                  </div>
+            </div>
+    </div>
+</div>
