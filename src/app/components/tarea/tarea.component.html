@@ -1,105 +1,104 @@
-<div class="p-d-flex">
-    <div class=" text-layout">
-        <h1 class="poppins text-center">Listado de Tareas</h1>
+
+<!--<div class="container" [style.width.px]="data.width" [style.height.px]="data.height">
+    <div cdkDropList
+        class="example-box"
+        *ngFor="let todos of todo" 
+        (cdkDropListDropped)="drop($event)"
+        cdkDrag>
+
+        <div>
+            <img src="assets/herramientas/{{todos.file}}.png" >
+        </div> 
     </div>
+</div>-->
 
-    <div class="m-4">
-        <div class="text-layout poppins text-center">
-            <h4>Agregar Nueva Tarea </h4>
 
-            <span class="p-float-label">
-                <input
-                [(ngModel)]="tareasNuevas"
-                (keyup.enter)="agregarTarea()"
-                class="p-5"
-                id="float-input"
-                type="text"
-                 pInputText>
 
-                <label
-                 for="float-input">
-                 Nueva Tarea
-                </label>
-            </span>
-        </div>
-    </div>
+<div  cdkDropList
+      class="example-box"
+      (cdkDropListDropped)="drop($event)"
+      cdkDrag
+      class="container" #container [style.width.px]="data.width" [style.height.px]="data.height">
 
-    <div class="grid">
+    <div class="resize resize__right"
+          (resize)="onResize($event)"
+          [targetElement]="container"
+          [direction]="AngularResizeElementDirection.RIGHT" >
+     </div>
 
-          <div class="text-layout col-4">
-            <h4 class="poppins">Todas</h4>
-            <div
-                    cdkDropList class="example-list" 
-                    id="listaTodo" 
-                    [cdkDropListData]="todo"
-                    [cdkDropListConnectedTo]="['listaProgress']"
-                    (cdkDropListDropped)="drop($event)"
-                    >
-
-                <div
-                    class="example-box poppins"
-                    *ngFor="let todos of todo"
-                    cdkDrag>
-
-                    <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-                    {{todos | titlecase}}
-
-                    <button
-                        (click)="borrarCliente()" 
-                        class="p-button-danger"
-                        pButton type="button" 
-                        icon="pi pi-trash" 
-                        iconPos="left">
-                    </button>
-                    </div>
-              </div>
-          </div>
-        <div class=" text-layout col-4">
-            <h4 class="poppins">En Progreso</h4>
-            <div 
-                    cdkDropList class="example-list"
-                    id="listaProgress"
-                    [cdkDropListData]="progress"
-                    [cdkDropListConnectedTo]="['listaFinalizado','listaTodo']" 
-                    (cdkDropListDropped)="drop($event)">
-                <div
-                    class="example-box poppins" 
-                    *ngFor="let items of progress" 
-                    cdkDrag>
-
-                    <div
-                    class="example-custom-placeholder" 
-                    *cdkDragPlaceholder>
-                    </div>
-
-                    {{items}}
-                </div>
-              </div>
+        <div class="example-handle"  cdkDragHandle>
+            <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+              </svg>
         </div>
 
-            <div class=" text-layout col-4">
-                <h4 class="poppins">Finalizadas</h4>
-                <div 
-                    cdkDropList class="example-list" 
-                    id="listaFinalizado" 
-                    [cdkDropListData]="finalizadas"
-                    [cdkDropListConnectedTo]="['listaProgress']" 
-                    (cdkDropListDropped)="drop($event)">
-                    <div  
-                    class="example-box poppins"
-                     *ngFor="let items of finalizadas" 
-                     cdkDrag
-                     >
-                      <div class="example-custom-placeholder " *cdkDragPlaceholder></div>
-                      {{items}}
-                      <button
-                      class="p-button-success" 
-                      pButton type="button"
-                       icon="pi pi-check" 
-                       iconPos="left">
-                    </button>
-                    </div>
-                  </div>
-            </div>
+        <div  class="resize resize__bottom--right"
+              (resize)="onResize($event)"
+              [targetElement]="container"
+              [direction]="AngularResizeElementDirection.BOTTOM_RIGHT">
+            
+           <img src="assets/herramientas/llave-inglesa.png.png" >
     </div>
 </div>
+
+
+<div  cdkDropList
+      class="example-box"
+      (cdkDropListDropped)="drop($event)"
+      cdkDrag
+      class="container" #container [style.width.px]="data.width" [style.height.px]="data.height">
+
+    <div class="resize resize__left"
+          (resize)="onResize($event)"
+          [targetElement]="container"
+          [direction]="AngularResizeElementDirection.LEFT" >
+     </div>
+
+        <div class="example-handle"  cdkDragHandle>
+            <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+              </svg>
+        </div>
+
+        <div  class="resize resize__bottom--left"
+              (resize)="onResize($event)"
+              [targetElement]="container"
+              [direction]="AngularResizeElementDirection.BOTTOM_LEFT">
+            
+           <img src="assets/herramientas/llave-inglesa.png.png" >
+    </div>
+</div>
+
+
+
+
+<!--
+
+<div cdkDropList
+     class="example-box"
+     (cdkDropListDropped)="drop($event)"
+     cdkDrag>
+     
+
+    <div class="resize resize__bottom--right"
+        (resize)="onResize($event)"
+        [targetElement]="container"
+        [direction]="AngularResizeElementDirection.BOTTOM_RIGHT" >
+          
+    </div>
+    <img class="container"
+        #container 
+        [style.width.px]="data.width" 
+        [style.height.px]="data.height"   
+        src="assets/herramientas/cutter.png.png" >
+</div>-->
+
+
+
+
+
+  
+
+

@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { PrimeNGModule } from './prime-Ng/prime-ng.module';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 
+import { AngularResizeElementModule } from 'angular-resize-element';
+
+
 
 import { TareaComponent } from './components/tarea/tarea.component';
 
@@ -19,6 +22,7 @@ import { TareaComponent } from './components/tarea/tarea.component';
     FormsModule,
     DragDropModule,
     PrimeNGModule,
+    AngularResizeElementModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
